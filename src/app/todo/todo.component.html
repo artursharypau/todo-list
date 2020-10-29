@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-form-field class="form-field">
+    <mat-label>Add task</mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="but">
+    <button mat-stroked-button color="primary" (click)="onAdd()">Add</button>
+  </div>
+  <div>
+
+    <button mat-flat-button color="warn" (click)="onDelete()">Delete</button>
+  </div>
+</div>
+
+<div class="list">
+  <mat-selection-list>
+    <mat-list-option (click)="onChange(task)" *ngFor="let task of tasks" color="green">
+      {{task.id}} - {{task.value}} - {{task.state}}
+    </mat-list-option>
+  </mat-selection-list>
+</div>
